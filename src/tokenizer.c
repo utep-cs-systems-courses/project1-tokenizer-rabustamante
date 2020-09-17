@@ -4,49 +4,48 @@
 
 int space_char(char c)
 {
-  if(c == '\t' || c == ' '){
+  if(c == '\t' || c == ' '|| c != '\0'){
     return 1;
-  }
-  else if(c == '\0'){
-    return 0;
   }
   return 0;
   
 }
 int non_space_char(char c)
 {
-  if(c != '\t' || c != ' '){
+  if(c != '\t' || c != ' '|| c != '\0'){
     return 1;
-  }
-  else if(c == '\0'){
-    return 0;
   }
   return 0;
 }
 char *word_start(char *str)
 {
-  int i;
-  char *tmp;
-  while(str[i] !='\0'){
-    if(str[i+0] != ' ' || str[i+0] != '\t'){
-      tmp = &str[i+0];
+  char *tmp = str;
+  while(space_char(*tmp)!=1){
+    if(non_space_char(tmp[0])==1){
+      return tmp;
     }
-    else if(str[i+0] == '\t' || str[i+0] == ' '){
-      tmp = &str[i+1];
-    }
-    i++;
+    tmp++;
   }
-  return tmp;
+  return str;
 }
-char *wor_terminator(char *word)
+char *word_terminator(char *word)
 {
-  int i;
-  char *tmp;
-  while(word[i] != '\0'){
-    if(word[i-1] == ' '|| word[i-1] == '\t'){
-      tmp = &word[i-1];
+  
+  char *tmp = word;
+  while(non_space_char(*tmp) ==1){
+    if(non_space_char(tmp[0]) ==0){
+      return tmp;
     }
-    i++;
+    tmp++;
   }
-  return tmp;
+  return word;
+}
+int count_words(char *str)
+{
+  int n;
+
+  for (n = 0; *str !='\0' ; str++){
+    n++;
+  }
+  return n;
 }
