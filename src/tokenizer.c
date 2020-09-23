@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <tdlib.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 
 int space_char(char c)
@@ -54,7 +54,6 @@ int count_words(char *str)
     
     n++;
   }
-  
   return n;
 }
 char *copy_str(char *inStr, short len)
