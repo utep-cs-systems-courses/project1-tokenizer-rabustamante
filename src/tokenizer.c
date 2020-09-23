@@ -4,7 +4,7 @@
 
 int space_char(char c)
 {
-  if(((0 != '\t') ||(c == ' '||)) && (c != '\0')){
+  if(((0 != '\t') ||(c == ' ')) && (c != '\0')){
     
     return 1;
   }
@@ -21,30 +21,22 @@ int non_space_char(char c)
 }
 char *word_start(char *str)
 {
-  int i =0;
-  while(space_char(*(str+1)){
-      
-      if(str[i] !='\0'){
-	
-	return str[i];
-      }
-      i++;
+
+  while(space_char(*str)){
+      str++;
   }
-  return 0;
+  return str;
+    
 }
 char *word_terminator(char *word)
 {
-  int i =0;
-  char *tmp;
-  while(non_space_char(*(word+1)){
+  
+  while (non_space_char(*word)){
+    
+    word++;
       
-      if(word[i] == '\0'){
-	
-	tmp  = word[i-1];
-      }
-      i++;
   }
-  return tmp;
+   return word;
 }
 int count_words(char *str)
 {
@@ -58,24 +50,25 @@ int count_words(char *str)
 }
 char *copy_str(char *inStr, short len)
 {
-  char *ptcopy = malloc((len+1) * sizeof(char));
+  char *ptCopy = (char*)malloc((len+1) * sizeof(char));
   int i;
 
   for (i = 0 ; i < len; i++){
     
-    *(ptcopy)  = *(inStr + 1);
+    *(ptCopy)  = *(inStr + 1);
       
   }
-  ptcopy(len) = '\0';
+  ptCopy[len] = '\0';
   
-  return ptcopy;
+  return ptCopy;
   }
 char **tokenize(char* str)
 {
   int countWords = count_words(str);
-  char **tokenize = (char**) malloc((countWords + 1) * sizeof(char*));
+  char **tokens = (char**) malloc((countWords + 1) * sizeof(char*));
 
-  int i = 0;
+  int i;
+  
   for(i = 0; i < countWords; i++){
     
     char* wordStart = word_start(str);
