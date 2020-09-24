@@ -5,10 +5,11 @@
 
 List *int_history()
 {
-  List *list = malloc(sizeof(List));
-  list->root = malloc(sizeof(item));
+  List *list =(List*)malloc(sizeof(List));
+  
+  list->root =(Item*)malloc(sizeof(Item));
 
-  return list
+  return list;
 }
 void add_history(List *list, char *str)
 {
@@ -22,25 +23,28 @@ void add_history(List *list, char *str)
   }
   tmp->next = (Item*)malloc(sizeof(Item));
   tmp->next->next = 0;
-  tmp->next->sr = str;
+  tmp->next->str = str;
   tmp->next->id = id;
 }
 char *get_history(List *list, int id)
 {  
   Item *tmp = list->root->next;
   
-  while(temp->next !=0){
-    if(tmp->id ==id){
-      rturn tmp->str;
+  while(tmp != 0){
+    if(tmp->id == id){
+      return tmp-> str;
 
     }
     tmp = tmp->next;
   }
-  
+  return 0;
 }
-void print_history(List *list){
+void print_history(List *list)
+{
   Item *tmp = list->root->next;
+  
   while(tmp !=0){
+    
     printf("%d,%s\n", tmp->id, tmp->str);
     tmp = tmp->next;
   }
