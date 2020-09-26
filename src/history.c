@@ -3,7 +3,7 @@
 #include "history.h"
 #include "tokenizer.h"
 
-List *int_history()
+List *init_history()
 {
   List *list =(List*)malloc(sizeof(List));
   
