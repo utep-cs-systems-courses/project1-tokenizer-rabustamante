@@ -83,8 +83,8 @@ int main()
       print_history(history);
 
     }
-   
-    else { // Invalid option
+    /*Invaild option*/
+    else{
 
       printf("Invalid Selection, please try again!\n");
 
